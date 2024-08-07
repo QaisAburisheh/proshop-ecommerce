@@ -7,7 +7,9 @@ import { useGetTopProductsQuery } from "../slices/productsApiSlice";
 export default function ProductCarousel() {
   const { data: products, isLoading, error } = useGetTopProductsQuery();
 
-  return error ? (
+  return isLoading ? (
+    <Loader />
+  ) : error ? (
     <Message variant="danger">{error}</Message>
   ) : (
     <Carousel pause="hover" className="bg-primary mb-4">
